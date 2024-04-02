@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <!-- Ajoutez ici vos liens CSS, scripts, etc. -->
+</head>
+<body>
+    <h2>Connexion</h2>
+    <form method="post" action="{% url 'Clients:login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Se connecter</button>
+    </form>
+    <!-- Ajoutez ici vos scripts JavaScript, etc. -->
+</body>
+</html>
+<div class="tm-section tm-section-pad tm-bg-gray" id="tm-section-4" style="{ position: relative; }">
+    <div class="container">
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                <div class="tm-article-carousel">                            
+                    <article class="tm-bg-white mr-2 tm-carousel-item">
+                        <img src="{{ post.Image.url }}" alt="Image" class="img-fluid">
+                        <div class="tm-article-pad">
+                            <header>
+                                <h3 class="card-title">{{ post.title }}</h3>
+                            </header>
+                            <p class="card-text">{{ post.overview }}</p>
+                             <a href="#" class="text-uppercase btn-primary tm-btn-primary">Get More Info.</a>
+                        </div>                                
+                    </article>
+                </div>
+            </div>
+            {% endfor %}
+        </div> 
+    </div>
+</div>

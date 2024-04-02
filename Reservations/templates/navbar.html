@@ -1,0 +1,73 @@
+
+<div class="tm-top-bar" >
+    <div class="container">
+        <div class="row" >
+            <nav class="navbar navbar-expand-lg narbar-light"  >
+                <div  style=" margin-left:-20px;">
+                  <a class="navbar-brand mr-auto" >
+                    <img src="static\img\OIP.jpg" alt="Site logo">
+                    Travelscape
+                </a>
+            </div>
+                <div class="collapse navbar-collapse tm-bg-white" >
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item d-flex">
+                            <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item d-flex">
+                            <a class="nav-link" href="#" id="inscrireDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Promotion
+                            </a>
+                        </li>
+                        <li class="nav-item d-flex">
+                            <a class="nav-link" href="#tm-section-2">Top Destinations</a>
+                        </li>
+                        <li class="nav-item dropdown "> <!-- Ajout de la classe 'dropdown' -->
+                            {% if user.is_anonymous %}
+                                <!-- Si l'utilisateur est non connecté, affichez la liste déroulante pour la connexion et l'inscription -->
+                                <a class="nav-link dropdown-toggle" href="#" id="inscrireDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Espace personnel
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="inscrireDropdown">
+                                    <a class="dropdown-item" href="{% url 'login' %}">
+                                        <i class="fas fa-user"></i> Se connecter
+                                    </a>
+                                    <a class="dropdown-item" href="{% url 'creer_client' %}">
+                                        <i class="fas fa-clipboard"></i> S'inscrire 
+                                    </a>
+                                </div>
+                            {% else %}
+                           
+                                <!-- Si l'utilisateur est connecté, affichez le compte utilisateur et le panier -->
+                                <a id="a" href="{% url 'dashboard' %}">
+                                    {{ user.username }}
+                                    {% if user.photo %}
+                                        <img src="{{ user.photo.url }}" style="width: 35px; height: 35px; border: none;">
+                                    {% else %}
+                                        <i class="fa-solid fa-circle-user"></i>
+                                    {% endif %}
+                                    
+                                </a>
+                            
+                                <a id="a" href="">
+                                    Panier
+                                    <i class="fa fa-light fa-cart-shopping"></i>
+                                    {% if cart_count > 0 %}
+                                        <strong style="border-radius: 200%; font-size: 12px; width: 20px; height: 20px; float: right; background-color: red; color: white; text-align: center">
+                                            
+                                        </strong>
+                                    {% endif %}
+                                </a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                    
+                    
+                    </div>
+                         
+                </div>
+                                          
+        </nav>
+    </div> <!-- row -->
+</div> <!-- container -->
+</div> <!-- .tm-top-bar -->
